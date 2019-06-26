@@ -1,20 +1,60 @@
+'use strict';
+
 const { DateTime } = require("luxon");
+const fs = require("fs");
+const pluginRss = require("@11ty/eleventy-plugin-rss");
+const pluginSyntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight"); // à retirer?
 const CleanCSS = require("clean-css");
 const UglifyJS = require("uglify-es");
 const htmlmin = require("html-minifier");
 
+function extractExcerpt(doc) {
+  if (!doc.hasOwnProperty('templateContent')) {
+    console.warn('Failed to extract excerpt: Document has no property `templateContent`.');
+    return;
+  }
+
+  const excerptSeparator = '<!--plus-->';
+  const content = doc.templateContent;
+
+  if (content.includes(excerptSeparator)) {
+    return content.substring(0, content.indexOf(excerptSeparator)).trim();
+  }
+
+  const pCloseTag = '</p>';
+  if (content.includes(pCloseTag)) {
+    return content.substring(0, content.indexOf(pCloseTag) + pCloseTag.length);
+  }
+
+  return content;
+} 
+
 module.exports = function(eleventyConfig) {
+  eleventyConfig.addPlugin(pluginRss);
+  eleventyConfig.addPlugin(pluginSyntaxHighlight);
+  eleventyConfig.setDataDeepMerge(true);
+
   eleventyConfig.addLayoutAlias("post", "layouts/post.njk");
 
   // Date formatting (human readable)
   eleventyConfig.addFilter("readableDate", dateObj => {
-    return DateTime.fromJSDate(dateObj).toFormat("dd LLL yyyy");
+    return DateTime.fromJSDate(dateObj, {zone: 'utc'}).toFormat("yyyy年L月d日");
   });
 
   // Date formatting (machine readable)
-  eleventyConfig.addFilter("machineDate", dateObj => {
-    return DateTime.fromJSDate(dateObj).toFormat("yyyy-MM-dd");
+  // https://html.spec.whatwg.org/multipage/common-microsyntaxes.html#valid-date-string
+  eleventyConfig.addFilter('htmlDateString', (dateObj) => {
+    return DateTime.fromJSDate(dateObj, {zone: 'utc'}).toFormat('yyyy-LL-dd');
   });
+
+  // mise en bouche
+  eleventyConfig.addShortcode('excerpt', post => extractExcerpt(post));
+  /* new version coming in 0.8.4
+  eleventyConfig.setFrontMatterParsingOptions({
+    excerpt: true,
+    excerpt_separator: '---'
+  });
+  */
 
   // Minify CSS
   eleventyConfig.addFilter("cssmin", function(code) {
@@ -44,6 +84,8 @@ module.exports = function(eleventyConfig) {
     return content;
   });
 
+  eleventyConfig.addCollection("tagList", require("./src/_11ty/getTagList"));
+
   // only content in the `posts/` directory
   eleventyConfig.addCollection("posts", function(collection) {
     return collection.getAllSorted().filter(function(item) {
@@ -52,9 +94,8 @@ module.exports = function(eleventyConfig) {
   });
 
   // Don't process folders with static assets e.g. images
-  eleventyConfig.addPassthroughCopy("static/img");
   eleventyConfig.addPassthroughCopy("admin");
-  eleventyConfig.addPassthroughCopy("_includes/assets/");
+  eleventyConfig.addPassthroughCopy("src/_includes/assets/");
 
   /* Markdown Plugins */
   let markdownIt = require("markdown-it");
@@ -65,15 +106,33 @@ module.exports = function(eleventyConfig) {
     linkify: true
   };
   let opts = {
-    permalink: false
+    // permalink: false
+      // —> retirer les trois options ci-dessous pour activer celle-ci
+    permalink: true,
+    permalinkClass: "direct-link",
+    permalinkSymbol: "#"
   };
 
   eleventyConfig.setLibrary("md", markdownIt(options)
     .use(markdownItAnchor, opts)
   );
 
+  eleventyConfig.setBrowserSyncConfig({
+    callbacks: {
+      ready: function(err, browserSync) {
+        const content_404 = fs.readFileSync('dist/404.html');
+
+        browserSync.addMiddleware("*", (req, res) => {
+          // Provides the 404 content without redirect.
+          res.write(content_404);
+          res.end();
+        });
+      }
+    }
+  });
+
   return {
-    templateFormats: ["md", "njk", "html", "liquid"],
+    templateFormats: ["md", "njk", "html"],
 
     // If your site lives in a different subdirectory, change this.
     // Leading or trailing slashes are all normalized away, so don’t worry about it.
@@ -81,15 +140,15 @@ module.exports = function(eleventyConfig) {
     // This is only used for URLs (it does not affect your file structure)
     pathPrefix: "/",
 
-    markdownTemplateEngine: "liquid",
+    markdownTemplateEngine: "njk",
     htmlTemplateEngine: "njk",
     dataTemplateEngine: "njk",
     passthroughFileCopy: true,
     dir: {
-      input: ".",
+      input: "src",
       includes: "_includes",
       data: "_data",
-      output: "_site"
+      output: "dist"
     }
   };
 };

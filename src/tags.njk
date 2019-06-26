@@ -1,0 +1,30 @@
+---
+pagination:
+  data: collections
+  size: 1
+  alias: tag
+  filter:
+    - all
+    - nav
+    - post
+    - posts
+    - tagList
+  addAllPagesToCollections: true
+layout: layouts/home.njk
+renderData:
+  title: Tagged “{{ tag }}”
+permalink: /tags/{{ tag }}/
+---
+
+<h1>Tagged “{{ tag }}”</h1>
+
+{% set postslist = collections[ tag ] %}
+{% include "components/postslist.njk" %}
+
+<p>See <a href="{{ '/tags/' | url }}">all tags</a>.</p>
+<!--
+par défaut dans eleventy-netlify-boilerplate, à la place de la ligne précédente
+<nav>
+  <a href="{{ '/blog/' | url }}">← Blog index</a>
+</nav>
+-->

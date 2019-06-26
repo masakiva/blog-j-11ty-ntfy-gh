@@ -1,0 +1,12 @@
+{
+  "title": "阿部淳子のブログ",
+  "url": "https://abejunko.jp",
+  "description": "155字以下。それは私たちが、人間にも動物にもあると信じている「霊」というか「魂」というか、そのスピリチュアルなものが、皆同じものだと思うからではないだろうか。",
+  "feed": {
+    "subtitle": "same as the above “description”",
+    "filename": "feed.xml",
+    "path": "/feed/feed.xml",
+    "url": "https://myurl.com/feed/feed.xml",
+    "id": "https://myurl.com/"
+  }
+}
