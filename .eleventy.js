@@ -8,27 +8,6 @@ const CleanCSS = require("clean-css");
 const UglifyJS = require("uglify-es");
 const htmlmin = require("html-minifier");
 
-function extractExcerpt(doc) {
-  if (!doc.hasOwnProperty('templateContent')) {
-    console.warn('Failed to extract excerpt: Document has no property `templateContent`.');
-    return;
-  }
-
-  const excerptSeparator = '<!--plus-->';
-  const content = doc.templateContent;
-
-  if (content.includes(excerptSeparator)) {
-    return content.substring(0, content.indexOf(excerptSeparator)).trim();
-  }
-
-  const pCloseTag = '</p>';
-  if (content.includes(pCloseTag)) {
-    return content.substring(0, content.indexOf(pCloseTag) + pCloseTag.length);
-  }
-
-  return content;
-} 
-
 module.exports = function(eleventyConfig) {
   eleventyConfig.addPlugin(pluginRss);
   eleventyConfig.addPlugin(pluginSyntaxHighlight);
@@ -46,15 +25,6 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addFilter('htmlDateString', (dateObj) => {
     return DateTime.fromJSDate(dateObj, {zone: 'utc'}).toFormat('yyyy-LL-dd');
   });
-
-  // mise en bouche
-  eleventyConfig.addShortcode('excerpt', post => extractExcerpt(post));
-  /* new version coming in 0.8.4
-  eleventyConfig.setFrontMatterParsingOptions({
-    excerpt: true,
-    excerpt_separator: '---'
-  });
-  */
 
   // Minify CSS
   eleventyConfig.addFilter("cssmin", function(code) {

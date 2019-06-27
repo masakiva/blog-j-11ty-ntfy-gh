@@ -11,7 +11,7 @@ layout: layouts/base.njk
       <a class="le-chemin" href="{{ article.url | url }}">{{ article.data.title }}</a>
     </h2>
 
-    <article class="mise-en-bouche">{% excerpt article %}</article>
+    <article class="mise-en-bouche">{{ article.data.debut }}</article>
   </li>
 {% endfor %}
 </ul>

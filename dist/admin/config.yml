@@ -12,13 +12,13 @@ site_url: https://abejunko.netlify.com
 collections:
   # Our blog posts
   - name: "articles" # Used in routes, e.g., /admin/collections/blog
-    label: "Articles" # Used in the UI
+    label: "記事" # Used in the UI
     folder: "src/posts" # The path to the folder where the documents are stored
     create: true # Allow users to create new documents in this collection
     slug: "{{slug}}" # Filename template, e.g., YYYY-MM-DD-title.md
     fields: # The fields for each document, usually in front matter
       - { label: "Titre", name: "title", widget: "string" }
       - { label: "Date de publication", name: "date", widget: "datetime" }
-      - { label: "Début (pour la page d’accueil)", name: "summary", widget: "text", required: "false" }
-      - { label: "Catégories", name: "tags", widget: "list", required: "false", default: ["articles"] }
+      - { label: "Début (pour la page d’accueil)", name: "debut", widget: "text" }
+      - { label: "Catégories", name: "tags", widget: "list", required: false }
       - { label: "Corps de l’article", name: "body", widget: "markdown" }
