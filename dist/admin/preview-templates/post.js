@@ -18,11 +18,10 @@ const Post = createClass({
                 >${
                   format(
                     entry.getIn(["data", "date"], new Date()),
-                    "DD MMM, yyyy"
+                    "YYYY年M月D日"
                   )
                 }</time
               >
-              ${" by Author"}
             </small>
           </p>
 
