@@ -33,7 +33,10 @@ main :first-child {
 }
 */
 
-/* Header */
+
+/* —————————————————
+le bandeau, à gauche
+————————————————— */
 header {
   min-height: 56px;
 
@@ -42,7 +45,7 @@ header {
     height: 100%;
     position: fixed;
     z-index: 1;
-    background-color: black;
+    background-image: url("/_includes/assets/img/lin-bleu.jpg");
   }
 
   @include media(769px, 959px) {
@@ -66,7 +69,8 @@ header {
 
   @include media(769px, 5000px) {
     a {
-      color: ghostwhite;
+      /*color: ghostwhite;*/
+      color: black;
       text-decoration: none;
     }
     margin: 10px;
@@ -86,7 +90,7 @@ header {
 .quelques-mots {
   display: inline-block;
   @include media(769px, 5000px) {
-    color: lightgrey;
+    /*color: lightgrey;*/
   }
 
   @include media(769px, 959px) {
@@ -120,8 +124,10 @@ header {
   }
 }
 
-/* Posts list */
-.tmpl-home {
+/* ———————————————————————————
+la partie principale, à droite
+——————————————————————————— */
+main {
   padding: 30px;
   @include media(769px, 5000px) {
   }
@@ -157,5 +163,11 @@ header {
   }
   .mise-en-bouche {
     margin-left: 20px;
+  }
+}
+
+.un-article {
+  .le-titre {
+    font-size: 2rem;
   }
 }

@@ -1,5 +1,5 @@
 <!doctype html>
-<html {% if section %} data-current="{{ section }}"{% endif %} lang="ja">
+<html lang="ja">
 
   <head>
     {% include "components/head.njk" %}
@@ -11,7 +11,7 @@
       {% include "components/header.njk" %}
     </header>
 
-    <main{% if templateClass %} class="{{ templateClass }}"{% endif %}>
+    <main>
       {{ content | safe }}
     </main>
 

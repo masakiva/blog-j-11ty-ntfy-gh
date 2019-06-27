@@ -1,22 +1,19 @@
 ---
 layout: layouts/base.njk
-section: post
 ---
 
-<article>
-  <h1>{{ title }}</h1>
+<article class="un-article">
+  <h1 class="le-titre">{{ title }}</h1>
   <p>
-    <small>
-      <time datetime="{{ date | htmlDateString }}">{{ date | readableDate }}</time> by {{ metadata.author.name }}
-    </small>
+    <time class="quel-jour" datetime="{{ date | htmlDateString }}">{{ date | readableDate }}</time>
   </p>
 
-  {{ layoutContent | safe }}
+  {{ content | safe }}
 
   {% if tags %}
     <p>
     {% for tag in tags %}
-      {%- if tag != "post" -%}
+      {%- if tag != "articles" -%}
         {% set tagUrl %}/tags/{{ tag }}/{% endset %}
         <a href="{{ tagUrl | url }}" rel="tag">{{ tag }}</a>
       {%- endif -%}
@@ -25,7 +22,3 @@ section: post
   {% endif %}
 
 </article>
-
-<nav>
-  <a href="{{ '/blog/' | url }}">← Blog index</a>
-</nav>
