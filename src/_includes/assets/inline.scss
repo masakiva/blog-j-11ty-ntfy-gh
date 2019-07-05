@@ -8,6 +8,18 @@
   }
 }
 
+@font-face {
+  font-family: mushin;
+  src: url("/_includes/assets/mushin.otf") format("opentype");
+}
+@font-face {
+  font-family: source-han-sans;
+  src: url("/_includes/assets/SourceHanSansJ/SourceHanSans-Regular.otf") format("opentype");
+}
+@font-face {
+  font-family: source-han-sans-bold;
+  src: url("/_includes/assets/SourceHanSansJ/SourceHanSans-Bold.otf") format("opentype");
+}
 
 * {
   box-sizing: border-box;
@@ -33,114 +45,57 @@ main :first-child {
 }
 */
 
+html, body {
+  height: 100%;
+  overflow: hidden;
+}
 
-/* —————————————————
-le bandeau, à gauche
-————————————————— */
+body {
+  background-image: url("/_includes/assets/img/lin-bleu.jpg");
+}
+
+div.cadre {
+  position: fixed;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  height: 90%;
+  width: 60%;
+  overflow: auto;
+  border-radius: 25px;
+  border: 1px solid hsl(93, 90%, 23%);
+  background-color: azure;
+  padding: 20px;
+  box-shadow: 1px 1px 15px hsl(0, 0%, 10%);
+}
+
 header {
-  min-height: 56px;
-
-  @include media(769px, 5000px) {
-    padding-top: 20px;
-    height: 100%;
-    position: fixed;
-    z-index: 1;
-    background-image: url("/_includes/assets/img/lin-bleu.jpg");
-  }
-
-  @include media(769px, 959px) {
-    width: 220px;
-  }
-
-  @include media(960px, 5000px) {
-    width: 300px;
-  }
+  margin: 20px 0;
 }
-
-.junko {
-  width: 180px;
-  margin: 0 60px;
+div.titre-et-photo {
+  text-align: right;
+  margin-right: 15px;
 }
-
-.retournons-au-logis {
-  padding: 5px;
+h1.retournons-au-logis {
+  font: 3.5rem mushin;
+  vertical-align: top;
   display: inline-block;
-  font-weight: 400;
-
-  @include media(769px, 5000px) {
-    a {
-      /*color: ghostwhite;*/
-      color: black;
-      text-decoration: none;
-    }
-    margin: 10px;
-  }
-
-  @include media(769px, 959px) {
-    font-size: 1.4rem;
-    margin-bottom: 50px;
-  }
-
-  @include media(960px, 5000px) {
-    font-size: 1.7rem;
-    margin-bottom: 70px;
-  }
+  margin-right: 15px;
 }
-
-.quelques-mots {
+h1.retournons-au-logis a {
+  color: hsl(93, 90%, 23%);
+  text-decoration: none;
+}
+img.junko {
+  width: 100px;
   display: inline-block;
-  @include media(769px, 5000px) {
-    /*color: lightgrey;*/
-  }
-
-  @include media(769px, 959px) {
-    font-size: 0.95rem;
-    margin: 10px;
-  }
-
-  @include media(960px, 5000px) {
-    font-size: 1rem;
-    margin: 15px;
-  }
+  border-radius: 50%;
 }
 
-.legal-stuff {
-  @include media(769px, 5000px) {
-    display: inline-block;
-    position: fixed;
-    bottom: 7px;
-    transform: translate(-50%);
-    color: lightgrey;
-  }
-
-  @include media(769px, 959px) {
-    left: 100px;
-    font-size: 0.7rem;
-  }
-
-  @include media(960px, 5000px) {
-    left: 150px;
-    font-size: 0.8rem;
-  }
-}
-
-/* ———————————————————————————
-la partie principale, à droite
-——————————————————————————— */
 main {
-  padding: 30px;
-  @include media(769px, 5000px) {
-  }
-
-  @include media(769px, 959px) {
-    margin-left: 200px;
-  }
-
-  @include media(960px, 5000px) {
-    margin-left: 300px;
-  }
+  width: 42rem;
+  margin: auto;
+  padding-top: 20px;
 }
-
 .la-liste {
   list-style: none;
   padding-left: 0;
@@ -148,26 +103,51 @@ main {
   .une-entree {
     margin-bottom: 45px;
   }
-  .quel-jour {
-    font-size: 0.95rem;
-  }
   .le-chemin {
+    font-family: source-han-sans-bold;
+    font-weight: 400;
     display: inline-block;
     font-size: 1.6rem;
     text-decoration: none;
     color: black;
     padding: 2px;
-    margin-left: 20px;
     margin-top: 3px;
     margin-bottom: 3px;
   }
   .mise-en-bouche {
-    margin-left: 20px;
+    font-family: source-han-sans;
+    display: inline;
+  }
+  .quel-jour {
+    font-size: 0.95rem;
+    font-family: mushin;
+    color: hsl(93, 90%, 23%);
   }
 }
 
 .un-article {
   .le-titre {
     font-size: 2rem;
+  }
+}
+
+.quelques-mots, .legal-stuff {
+  font-size: 0.8rem;
+}
+
+
+form {
+  margin: 1rem 0;
+  .pot-de-miel {
+    visibility: hidden;
+    height: 1px;
+    overflow: none;
+  }
+  label {
+    display: block;
+    margin: 0.7rem 0 0.2rem;
+  }
+  button {
+    margin: 0.7rem 0;
   }
 }

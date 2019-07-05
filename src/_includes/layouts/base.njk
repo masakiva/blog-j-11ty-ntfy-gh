@@ -6,6 +6,7 @@
   </head>
 
   <body>
+    <div class="cadre">
 
     <header>
       {% include "components/header.njk" %}
@@ -15,7 +16,11 @@
       {{ content | safe }}
     </main>
 
+<p class="quelques-mots">{{ metadata.description }}</p>
+<p class="legal-stuff">© CC BY-ND</p>
     <!-- Current page: {{ page.url | url }} -->
+
+    </div>
   </body>
 
 </html>

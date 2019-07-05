@@ -5,13 +5,13 @@ layout: layouts/base.njk
 <ul class="la-liste">
 {% for article in collections.articles | reverse %}
   <li class="une-entree">
-    <time class="quel-jour" datetime="{{ article.date | htmlDateString }}">{{ article.date | readableDate }}</time>
-
     <h2>
       <a class="le-chemin" href="{{ article.url | url }}">{{ article.data.title }}</a>
     </h2>
 
     <article class="mise-en-bouche">{{ article.data.debut }}</article>
+    <span class="quel-jour"> — <time datetime="{{ article.date | htmlDateString }}">{{ article.date | readableDate }}</time></span>
+
   </li>
 {% endfor %}
 </ul>
