@@ -10,7 +10,7 @@
 
 @font-face {
   font-family: mushin;
-  src: url("/_includes/assets/mushin.otf") format("opentype");
+  src: url("/_includes/assets/mushin-custom.otf") format("opentype");
 }
 @font-face {
   font-family: source-han-sans;
@@ -59,7 +59,7 @@ div.cadre {
   transform: translate(-50%, -50%);
   height: 90%;
   width: 60%;
-  overflow: auto;
+  overflow-y: auto;
   border-radius: 25px;
   border: 1px solid hsl(93, 90%, 23%);
   background-color: azure;
@@ -143,7 +143,7 @@ main {
     div.le-texte {
       p {
         font-size: 1.1rem;
-        line-height: 1.6;
+        line-height: 1.5;
         margin-top: 1rem;
         margin-bottom: 1rem;
       }
