@@ -17,8 +17,8 @@
   src: url("/_includes/assets/SourceHanSansJ/SourceHanSans-Regular.otf") format("opentype");
 }
 @font-face {
-  font-family: source-han-sans-bold;
-  src: url("/_includes/assets/SourceHanSansJ/SourceHanSans-Bold.otf") format("opentype");
+  font-family: source-han-sans-medium;
+  src: url("/_includes/assets/SourceHanSansJ/SourceHanSans-Medium.otf") format("opentype");
 }
 
 * {
@@ -32,7 +32,6 @@ hr, dl, dd,
 ol, ul, figure {
   padding: 0;
   margin: 0;
-  font-family: sans-serif;
 }
 
 
@@ -101,22 +100,22 @@ main {
   padding-left: 0;
   margin: 0;
   .une-entree {
-    margin-bottom: 45px;
+    margin-bottom: 2.2rem;
   }
   .le-chemin {
-    font-family: source-han-sans-bold;
+    font-family: source-han-sans-medium;
     font-weight: 400;
     display: inline-block;
-    font-size: 1.6rem;
+    font-size: 1.7rem;
     text-decoration: none;
     color: black;
-    padding: 2px;
-    margin-top: 3px;
-    margin-bottom: 3px;
+    padding: 0.1rem;
+    margin: 0.6rem 0;
   }
   .mise-en-bouche {
     font-family: source-han-sans;
     display: inline;
+    line-height: 1.5;
   }
   .quel-jour {
     font-size: 0.95rem;
@@ -125,9 +124,41 @@ main {
   }
 }
 
-.un-article {
-  .le-titre {
-    font-size: 2rem;
+.article {
+  header {
+    margin-top: 0;
+  }
+  h1.retournons-au-logis {
+    display: block;
+    font-size: 1.6rem;
+    text-align: right;
+  }
+  article.un-article {
+    font-family: source-han-sans;
+    h1.le-titre {
+      font: 2.5rem source-han-sans-medium;
+      display: inline-block;
+      margin-bottom: 1rem;
+    }
+    div.le-texte {
+      p {
+        font-size: 1.1rem;
+        line-height: 1.6;
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+      }
+      h2 {
+      }
+      p:last-of-type {
+        display: inline;
+      }
+    }
+    span.quel-jour {
+      font-size: 0.9rem;
+      font-family: mushin;
+      color: hsl(93, 90%, 23%);
+      display: inline-block;
+    }
   }
 }
 
@@ -149,5 +180,21 @@ form {
   }
   button {
     margin: 0.7rem 0;
+  }
+}
+
+
+footer {
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  width: 80%;
+  transform: translate(-50%);
+  border-top: 1px solid darkgrey;
+  padding-top: 0.1rem;
+  p {
+    width: 50%;
+    margin: 0.5rem auto;
+    font-family: source-han-sans;
   }
 }

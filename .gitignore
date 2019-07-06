@@ -1,4 +1,8 @@
 dist/
+functions/
+
+src/_data/init.json
+src/_data/comments.json
 
 node_modules/
 package-lock.json

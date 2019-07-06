@@ -1,36 +1,59 @@
----
-layout: layouts/base.njk
----
+<!doctype html>
+<html lang="ja">
 
-<article class="un-article">
-  <h1 class="le-titre">{{ title }}</h1>
-  <p>
-    <time class="quel-jour" datetime="{{ date | htmlDateString }}">{{ date | readableDate }}</time>
-  </p>
+  <head>
+    {% include "components/head.njk" %}
+  </head>
 
-  {{ content | safe }}
+  <body class="article">
+    <div class="cadre">
 
-  {% if tags %}
-    <p>
-    {% for tag in tags %}
-      {%- if tag != "articles" -%}
-        {% set tagUrl %}/tags/{{ tag }}/{% endset %}
-        <a href="{{ tagUrl | url }}" rel="tag">{{ tag }}</a>
-      {%- endif -%}
-    {% endfor %}
-    </p>
-  {% endif %}
+    <header>
+        <h1 class="retournons-au-logis">
+          <a href="{{ '/' | url }}">{{ metadata.title }}</a>
+        </h1>
+    </header>
 
-  <div  class="les-commentaires">
-    {% include "components/comments.njk" %}
+    <main>
+      <article class="un-article">
+        <h1 class="le-titre">{{ title }}</h1>
 
-    {% if commentsClosed != true %}
-      {% include "components/comment-form.njk" %}
-    {% else %}
-      <div class="commentaires-clos">
-        <p>Comments on this page are now closed.</p>
-      </div>
-    {% endif %}
-  </div>
+        <div class="le-texte">
+          {{ content | safe }}
+          <span class="quel-jour"> — <time datetime="{{ date | htmlDateString }}">{{ date | readableDate }}</time></span>
+        </div>
 
-</article>
+        {% if tags %}
+          <p>
+          {% for tag in tags %}
+            {%- if tag != "articles" -%}
+              {% set tagUrl %}/tags/{{ tag }}/{% endset %}
+              <a href="{{ tagUrl | url }}" rel="tag">{{ tag }}</a>
+            {%- endif -%}
+          {% endfor %}
+          </p>
+        {% endif %}
+
+        <div  class="les-commentaires">
+          {% include "components/comments.njk" %}
+
+          {% if commentsClosed != true %}
+            {% include "components/comment-form.njk" %}
+          {% else %}
+            <div class="commentaires-clos">
+              <p>Comments on this page are now closed.</p>
+            </div>
+          {% endif %}
+        </div>
+
+      </article>
+    </main>
+
+<p class="quelques-mots">{{ metadata.description }}</p>
+<p class="legal-stuff">© CC BY-ND</p>
+    <!-- Current page: {{ page.url | url }} -->
+
+    </div>
+  </body>
+
+</html>

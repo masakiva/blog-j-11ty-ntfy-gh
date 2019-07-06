@@ -1,6 +1,7 @@
 [build]
-  publish = "dist"
   command = "npx gulp css && npx eleventy"
+  publish = "dist"
+  functions = "functions"
 
 # REDIRECT and HEADERS examples
 
