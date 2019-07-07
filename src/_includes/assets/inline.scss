@@ -12,14 +12,6 @@
   font-family: mushin;
   src: url("/_includes/assets/mushin-custom.ttf") format("opentype");
 }
-@font-face {
-  font-family: source-han-sans;
-  src: url("/_includes/assets/SourceHanSansJ/SourceHanSans-Regular.otf") format("opentype");
-}
-@font-face {
-  font-family: source-han-sans-medium;
-  src: url("/_includes/assets/SourceHanSansJ/SourceHanSans-Medium.otf") format("opentype");
-}
 
 * {
   box-sizing: border-box;
@@ -51,6 +43,7 @@ html, body {
 
 body {
   background-image: url("/_includes/assets/img/lin-bleu.jpg");
+  font-family: "ヒラギノ角ゴ ProN", "Hiragino Kaku Gothic ProN", "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", HiraKakuProN-W3, "游ゴシック", "游ゴシック体", YuGothic, "Yu Gothic", Osaka, "ＭＳ ゴシック", "MS Gothic", "ＭＳ Ｐゴシック", "MS PGothic", "TakaoExゴシック", TakaoExGothic, MotoyaLCedar, "Droid Sans Japanese", "メイリオ", Meiryo, sans-serif;
 }
 
 div.cadre {
@@ -103,7 +96,6 @@ main {
     margin-bottom: 2.2rem;
   }
   .le-chemin {
-    font-family: source-han-sans-medium;
     font-weight: 400;
     display: inline-block;
     font-size: 1.7rem;
@@ -113,7 +105,6 @@ main {
     margin: 0.6rem 0;
   }
   .mise-en-bouche {
-    font-family: source-han-sans;
     display: inline;
     line-height: 1.5;
   }
@@ -134,9 +125,9 @@ main {
     text-align: right;
   }
   article.un-article {
-    font-family: source-han-sans;
     h1.le-titre {
-      font: 2.5rem source-han-sans-medium;
+      font-weight: 400;
+      font-size: 2.5rem;
       display: inline-block;
       margin-bottom: 1rem;
     }
@@ -160,10 +151,6 @@ main {
       display: inline-block;
     }
   }
-}
-
-.quelques-mots, .legal-stuff {
-  font-size: 0.8rem;
 }
 
 
@@ -193,8 +180,20 @@ footer {
   border-top: 1px solid darkgrey;
   padding-top: 0.1rem;
   p {
-    width: 50%;
+    width: 70%;
     margin: 0.5rem auto;
-    font-family: source-han-sans;
+    font-size: 0.85rem;
+  }
+  p.legal-stuff {
+    text-align: right;
+    font-size: 0.7rem;
+    a {
+      color: dimgrey;
+      text-decoration: none;
+      font-style: italic;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
   }
 }

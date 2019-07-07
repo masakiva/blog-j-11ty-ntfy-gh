@@ -4,29 +4,18 @@
   "description": "le blog de maman",
   "license": "MIT",
   "scripts": {
-    "build": "npx gulp build",
-    "gen": "npx gulp generate",
-    "gather": "npx gulp get:comments",
-    "build:local": "gulp build:local",
-    "build:functions": "netlify-lambda build src/lambda",
-    "watch": "npx gulp watch & npx gulp serve",
-    "check": "gulp check-init",
+    "build": "npx gulp css && npx eleventy",
+    "serve": "npx gulp watch & npx eleventy --serve",
     "debug": "DEBUG=* npx eleventy"
   },
   "devDependencies": {
     "@11ty/eleventy": "^0.8.2",
     "@11ty/eleventy-plugin-rss": "^1.0.6",
-    "del": "^5.0.0",
-    "dotenv": "^8.0.0",
     "gulp": "^4.0.2",
-    "gulp-concat": "^2.6.1",
     "gulp-sass": "^4.0.2",
-    "gulp-serve": "^1.4.0",
-    "gulp-shell": "^0.7.1",
     "luxon": "^1.12.1",
     "markdown-it": "^8.4.2",
-    "markdown-it-anchor": "^5.0.2",
-    "netlify-lambda": "^1.5.0"
+    "markdown-it-anchor": "^5.0.2"
   },
   "dependencies": {
     "clean-css": "^4.2.1",

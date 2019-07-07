@@ -74,11 +74,11 @@ module.exports = function(eleventyConfig) {
     linkify: true
   };
   let opts = {
-    // permalink: false
-      // —> retirer les trois options ci-dessous pour activer celle-ci
-    permalink: true,
-    permalinkClass: "direct-link",
-    permalinkSymbol: "#"
+    permalink: false
+      // —> retirer l’option ci-dessus pour activer les trois suivantes
+    // permalink: true,
+    // permalinkClass: "direct-link",
+    // permalinkSymbol: "#"
   };
 
   eleventyConfig.setLibrary("md", markdownIt(options)

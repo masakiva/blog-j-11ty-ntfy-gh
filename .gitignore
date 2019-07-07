@@ -6,6 +6,7 @@ src/_data/comments.json
 
 node_modules/
 package-lock.json
+.env
 
 *.swp
 *.swo

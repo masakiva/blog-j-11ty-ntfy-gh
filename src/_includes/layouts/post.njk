@@ -34,21 +34,6 @@
           </p>
         {% endif %}
 
-        <div  class="les-commentaires">
-          {% include "components/comments.njk" %}
-
-          {% if commentsClosed != true %}
-            {% include "components/comment-form.njk" %}
-          {% else %}
-            <div class="commentaires-clos">
-              <p>Comments on this page are now closed.</p>
-            </div>
-          {% endif %}
-        </div>
-
-      </article>
-    </main>
-
 <p class="quelques-mots">{{ metadata.description }}</p>
 <p class="legal-stuff">© CC BY-ND</p>
     <!-- Current page: {{ page.url | url }} -->
