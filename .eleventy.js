@@ -67,7 +67,7 @@ module.exports = function(eleventyConfig) {
 
   // Don't process folders with static assets e.g. images
   eleventyConfig.addPassthroughCopy("admin");
-  eleventyConfig.addPassthroughCopy("src/_includes/assets/");
+  eleventyConfig.addPassthroughCopy("src/includes/assets/");
 
   eleventyConfig.setBrowserSyncConfig({
     callbacks: {
@@ -97,8 +97,8 @@ module.exports = function(eleventyConfig) {
     passthroughFileCopy: true,
     dir: {
       input: "src",
-      includes: "_includes",
-      data: "_data",
+      includes: "includes",
+      data: "data",
       output: "dist"
     }
   };

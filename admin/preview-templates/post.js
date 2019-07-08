@@ -10,19 +10,13 @@ const Post = createClass({
 
     return html`
       <main>
-        <article>
-          <h1>${entry.getIn(["data", "title"], null)}</h1>
+        <article class="un-article">
+          <h1 class="le-titre">${entry.getIn(["data", "title"], null)}</h1>
           <p>
-            <small>
-              <time
-                >${
-                  format(
-                    entry.getIn(["data", "date"], new Date()),
-                    "YYYY年M月D日"
-                  )
-                }</time
-              >
-            </small>
+            <time>${format(
+              entry.getIn(["data", "date"], new Date()),
+              "YYYY年M月D日"
+            )}</time>
           </p>
 
           <p>${entry.getIn(["data", "debut"], "")}</p>

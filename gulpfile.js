@@ -8,14 +8,14 @@ const buildDest = "dist";
 
 
 gulp.task('css', function() {
-  return gulp.src(buildSrc + '/_includes/assets/inline.scss')
+  return gulp.src(buildSrc + '/includes/assets/inline.scss')
     .pipe(sass({
       outputStyle: 'compressed'
     })
     .on('error', sass.logError))
-    .pipe(gulp.dest(buildSrc + '/_includes/assets'));
+    .pipe(gulp.dest(buildSrc + '/includes/assets'));
 });
 
 gulp.task('watch', function() {
-  gulp.watch(buildSrc + '/_includes/assets/inline.scss', gulp.parallel('css'));
+  gulp.watch(buildSrc + '/includes/assets/inline.scss', gulp.parallel('css'));
 });
