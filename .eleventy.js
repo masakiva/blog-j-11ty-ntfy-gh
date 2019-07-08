@@ -17,6 +17,10 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addFilter("readableDate", dateObj => {
     return DateTime.fromJSDate(dateObj, {zone: 'utc'}).toFormat("yyyy年L月d日");
   });
+  // Date formatting (for permalinks)
+  eleventyConfig.addFilter("permalinkDate", dateObj => {
+    return DateTime.fromJSDate(dateObj, {zone: 'utc'}).toFormat("yyyy/LL");
+  });
 
   // Date formatting (machine readable)
   // https://html.spec.whatwg.org/multipage/common-microsyntaxes.html#valid-date-string
@@ -55,35 +59,15 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addCollection("tagList", require("./src/_11ty/getTagList"));
 
   // only content in the `posts/` directory
-  eleventyConfig.addCollection("posts", function(collection) {
+  eleventyConfig.addCollection("blog", function(collection) {
     return collection.getAllSorted().filter(function(item) {
-      return item.inputPath.match(/^\.\/posts\//) !== null;
+      return item.inputPath.match(/^\.\/blog\//) !== null;
     });
   });
 
   // Don't process folders with static assets e.g. images
   eleventyConfig.addPassthroughCopy("admin");
   eleventyConfig.addPassthroughCopy("src/_includes/assets/");
-
-  /* Markdown Plugins */
-  let markdownIt = require("markdown-it");
-  let markdownItAnchor = require("markdown-it-anchor");
-  let options = {
-    html: true,
-    breaks: true,
-    linkify: true
-  };
-  let opts = {
-    permalink: false
-      // —> retirer l’option ci-dessus pour activer les trois suivantes
-    // permalink: true,
-    // permalinkClass: "direct-link",
-    // permalinkSymbol: "#"
-  };
-
-  eleventyConfig.setLibrary("md", markdownIt(options)
-    .use(markdownItAnchor, opts)
-  );
 
   eleventyConfig.setBrowserSyncConfig({
     callbacks: {
@@ -106,7 +90,6 @@ module.exports = function(eleventyConfig) {
     // Leading or trailing slashes are all normalized away, so don’t worry about it.
     // If you don’t have a subdirectory, use "" or "/" (they do the same thing)
     // This is only used for URLs (it does not affect your file structure)
-    pathPrefix: "/",
 
     markdownTemplateEngine: "njk",
     htmlTemplateEngine: "njk",

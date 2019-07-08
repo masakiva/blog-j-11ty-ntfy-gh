@@ -5,22 +5,26 @@
     {% include "components/head.njk" %}
   </head>
 
-  <body>
+  <body class="logis">
     <div class="cadre">
 
-    <header>
-      {% include "components/header.njk" %}
-    </header>
+      <header>
+        <div class="titre-et-photo">
+          <h1 class="retournons-au-logis">
+            <a href="{{ '/' | url }}">{{ metadata.title }}</a>
+          </h1>
+          <img class="junko" src="/_includes/assets/img/junko.jpg">
+        </div>
+      </header>
 
-    <main>
-      {{ content | safe }}
-    </main>
+      <main>
+        {{ content | safe }}
+      </main>
 
-    <footer>
-      <p class="quelques-mots">{{ metadata.description }}</p>
-      <p class="legal-stuff"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.ja" target="_blank">CC BY-NC-SA 4.0</a></p>
-    </footer>
-    <!-- Current page: {{ page.url | url }} -->
+      <footer>
+        <p class="quelques-mots">{{ metadata.description }}</p>
+        <p class="legal-stuff"><a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.ja" target="_blank">CC BY-NC-SA 4.0</a></p>
+      </footer>
 
     </div>
   </body>
