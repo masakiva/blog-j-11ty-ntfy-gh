@@ -17,15 +17,15 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addFilter("readableDate", dateObj => {
     return DateTime.fromJSDate(dateObj, {zone: 'utc'}).toFormat("yyyy年L月d日");
   });
-  // Date formatting (for permalinks)
-  eleventyConfig.addFilter("permalinkDate", dateObj => {
-    return DateTime.fromJSDate(dateObj, {zone: 'utc'}).toFormat("yyyy/LL");
-  });
 
   // Date formatting (machine readable)
   // https://html.spec.whatwg.org/multipage/common-microsyntaxes.html#valid-date-string
   eleventyConfig.addFilter('htmlDateString', (dateObj) => {
     return DateTime.fromJSDate(dateObj, {zone: 'utc'}).toFormat('yyyy-LL-dd');
+  });
+
+  eleventyConfig.addFilter('removeFirstSlash', url => {
+    return url.replace('/blog', 'blog');
   });
 
   // Minify CSS
