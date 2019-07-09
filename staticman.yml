@@ -16,16 +16,16 @@ comments:
   branch: "master"
 
   # Text to use as the commit message or pull request title. Accepts placeholders.
-  commitMessage: "Add Staticman data"
+  commitMessage: "commentaire sur {options.slug}"
 
   # (*) REQUIRED
   #
   # Destination path (filename) for the data files. Accepts placeholders.
-  filename: "entry{@timestamp}"
+  filename: "commentaire-{@timestamp}"
 
   # The format of the generated data files. Accepted values are "json", "yaml"
   # or "frontmatter"
-  format: "yaml"
+  format: "json"
 
   # List of fields to be populated automatically by Staticman and included in
   # the data file. Keys are the name of the field. The value can be an object
@@ -34,8 +34,6 @@ comments:
   generatedFields:
     date:
       type: date
-      options:
-        format: "timestamp-seconds"
 
   # Whether entries need to be appproved before they are published to the main
   # branch. If set to `true`, a pull request will be created for your approval.
@@ -43,7 +41,7 @@ comments:
   moderation: true
 
   # Name of the site. Used in notification emails.
-  name: "eduardoboucas.com"
+  name: "abejunko.jp"
 
   # Notification settings. When enabled, users can choose to receive notifications
   # via email when someone adds a reply or a new comment. This requires an account
@@ -65,7 +63,7 @@ comments:
   # (*) REQUIRED
   #
   # Destination path (directory) for the data files. Accepts placeholders.
-  path: "src"
+  path: "src/data/comments/{options.slug}"
 
   # Names of required fields. If any of these isn't in the request or is empty,
   # an error will be thrown.
