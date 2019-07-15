@@ -5,7 +5,7 @@ $breakpoints: (w320: 320px, w480: 480px, w640: 640px, w768: 768px, w960: 960px);
 
 @font-face {
   font-family: mushin;
-  src: url("/_includes/assets/mushin-custom.ttf") format("opentype");
+  src: url("/includes/assets/mushin-custom.ttf") format("opentype");
 }
 
 * {
@@ -29,7 +29,7 @@ html, body {
 body {
   background-color: azure;
   @include media(">=768px") {
-    background-image: url("/_includes/assets/img/lin-bleu.jpg");
+    background-image: url("/includes/assets/img/lin-bleu.jpg");
     background-repeat: no-repeat;
     background-position: center;
   }
