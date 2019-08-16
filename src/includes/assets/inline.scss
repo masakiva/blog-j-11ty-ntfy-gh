@@ -243,7 +243,10 @@ body.article {
       }
     }
     img {
-      width: 75%;
+      max-height: 300px;
+      max-width: 100%;
+      display: block;
+      margin: 0 auto;
     }
     span.quel-jour {
       font-size: 0.9rem;
