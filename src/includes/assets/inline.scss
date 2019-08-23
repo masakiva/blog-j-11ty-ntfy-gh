@@ -37,6 +37,7 @@ body {
     overflow-y: auto;
   }
   font-family: "ヒラギノ角ゴ ProN", "Hiragino Kaku Gothic ProN", "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", HiraKakuProN-W3, "游ゴシック", "游ゴシック体", YuGothic, "Yu Gothic", Osaka, "ＭＳ ゴシック", "MS Gothic", "ＭＳ Ｐゴシック", "MS PGothic", "TakaoExゴシック", TakaoExGothic, MotoyaLCedar, "Droid Sans Japanese", "メイリオ", Meiryo, sans-serif;
+  text-rendering: optimizeLegibility;
 }
 
 div.cadre {
